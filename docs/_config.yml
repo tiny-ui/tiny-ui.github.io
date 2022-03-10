@@ -4,4 +4,5 @@ url: https://tiny-ui.github.io
 github_username:  HarlonWang
 
 # Build settings
-theme: "just-the-docs"
+# theme: "just-the-docs"
+remote_theme: just-the-docs/just-the-docs
