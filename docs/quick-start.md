@@ -7,7 +7,7 @@ nav_order: 2
 # 快速开始
 一个 `hello world` 的例子：
 
-```javascript
+```jsx
 // 1. 定义页面元素
 const page = () => {
     return (
