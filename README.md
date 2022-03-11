@@ -90,3 +90,6 @@ grand_parent: UI Components
 nav_order: 1
 ---
 ```
+
+## 资源
+**所有资源文件统一放置在 `assets` 目录中，按照文件类型放置，比如图片放在 `assets/images/**.png`。**
