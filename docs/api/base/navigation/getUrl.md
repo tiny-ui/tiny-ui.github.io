@@ -2,7 +2,7 @@
 layout: default
 title: getUrl
 nav_order: 3
-parent: 路由
+parent: 导航
 grand_parent: API
 
 ---

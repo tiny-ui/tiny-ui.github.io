@@ -2,7 +2,7 @@
 layout: default
 title: navigateTo
 nav_order: 1
-parent: 路由
+parent: 导航
 grand_parent: API
 
 ---

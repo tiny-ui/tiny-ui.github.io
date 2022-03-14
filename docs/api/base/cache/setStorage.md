@@ -2,7 +2,7 @@
 layout: default
 title: setStorage
 nav_order: 1
-parent: 缓存
+parent: 存储
 grand_parent: API
 
 ---
