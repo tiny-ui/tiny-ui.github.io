@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 缓存
+title: 存储
 nav_order: 5
 parent: API
 has_children: true
