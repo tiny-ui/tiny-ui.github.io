@@ -1,12 +1,24 @@
 ---
 layout: default
-title: 页面生命周期
-nav_order: 1
-parent: 应用级事件
+title: 应用级事件
+nav_order: 2
+parent: 基础
 grand_parent: API
 ---
 
+# 应用级事件
+
+{: .no_toc }
+
+## 目录
+
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 # 页面生命周期
+
 ## 说明
 注册app页面生命周期
 

@@ -1,13 +1,13 @@
 ---
 layout: default
-title: requestPost
+title: post
 nav_order: 2
 parent: 网络
 grand_parent: API
 
 ---
 
-# requestPost
+# post
 ## 说明
 发送网络请求POST
 

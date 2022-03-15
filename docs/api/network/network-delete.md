@@ -1,13 +1,13 @@
 ---
 layout: default
-title: requestDelete
+title: delete
 nav_order: 4
 parent: 网络
 grand_parent: API
 
 ---
 
-# requestPost
+# delete
 ## 说明
 发送网络请求DELETE
 

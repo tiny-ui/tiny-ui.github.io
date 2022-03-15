@@ -1,13 +1,13 @@
 ---
 layout: default
-title: requestPut
+title: put
 nav_order: 3
 parent: 网络
 grand_parent: API
 
 ---
 
-# requestPost
+# put
 ## 说明
 发送网络请求PUT
 

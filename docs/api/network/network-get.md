@@ -1,13 +1,13 @@
 ---
 layout: default
-title: requestGet
+title: get
 nav_order: 1
 parent: 网络
 grand_parent: API
 
 ---
 
-# requestGet
+# get
 ## 说明
 发送网络请求GET
 
