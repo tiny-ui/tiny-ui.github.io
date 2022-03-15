@@ -28,7 +28,6 @@ alert(text);
 
 ## 示例
 ```typescript
-// 设置一个定时器事件s
 alert("login")
 ```
 
