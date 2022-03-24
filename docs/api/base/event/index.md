@@ -24,35 +24,40 @@ grand_parent: API
 
 ## 使用
 ```javascript
-TinyAPI.lifecycle.register(name, callback);
+TinyAPI.base.registerLifecycle(name, callback);
 ```
 
 ## 示例
 ```javascript
-// 页面加载完成
-TinyAPI.lifecycle.register("onCreate", () => {
-    console.log("this is onCreate callback");
+// 页面正在加载，由不可见变为可见
+TinyAPI.base.registerLifecycle("onStart", () => {
+    console.log("this is onStart callback");
 })
 
-// A页面跳转到B页面后
-TinyAPI.lifecycle.register("onStop", () => {
+// 页面加载完成，并显示在屏幕上
+TinyAPI.base.registerLifecycle("onResume", () => {
+    console.log("this is onResume callback");
+})
+
+// 页面正在停止，并且即将进入不可见状态
+TinyAPI.base.registerLifecycle("onPause", () => {
+    console.log("this is onPause callback");
+})
+
+// 页面已经停止，并处于不可见状态
+TinyAPI.base.registerLifecycle("onStop", () => {
     console.log("this is onStop callback");
 })
 
-// 页面被关闭前期
-TinyAPI.lifecycle.register("onDestroy", () => {
+// 页面销毁
+TinyAPI.base.registerLifecycle("onDestroy", () => {
     console.log("this is onDestroy callback");
-})
-
-// 页面横竖屏改变
-TinyAPI.lifecycle.register("onChanged", () => {
-    console.log("this is onCreate callback");
 })
 ```
 
 ## 参数
 
-| 属性 | 类型 | 默认值 | 必填 | 说明 | 最低版本支持 |
-|:----|:----|:------|:-----|:----|:-----------|
-| name | String | - | 是 | 对应的生命周期名称（目前支持onCreate、onStop、onDestroy、onChanged四种） | v0.3.0 |
-| callback | Function | - | 是 | 在对应时期执行的方法 | v0.3.0 |
+| 属性 | 类型 | 默认值 | 必填 | 说明                                                       | 最低版本支持 |
+|:----|:----|:------|:-----|:---------------------------------------------------------|:-----------|
+| name | String | - | 是 | 对应的生命周期名称（目前支持onStart、onResume、onPause、onStop、onDestroy） | v0.3.0 |
+| callback | Function | - | 是 | 在对应时期执行的方法                                               | v0.3.0 |

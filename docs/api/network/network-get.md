@@ -26,7 +26,6 @@ TinyAPI.request.get(
             "refresh_token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMCxwYyIsImlzcyI6ImN3LmNvbSIsImp3dC11c2VyLW5hbWUta2V5IjoiZW1wbG95ZXIsZ2FtYmxlciIsImV4cCI6MTY0MjIxODM5MSwiaWF0IjoxNjQxOTU5MTkxfQ.cz6HP58X3DUQQ6eqyRWLu1DTtFyZTF1JCcR5RKNrqs8",
         },
         timeout: 3000,
-        responseType: "json",
         success: function (res) {
             console.log(res.url);
             console.log(res.status);
@@ -103,7 +102,6 @@ success示例
 |:----|:----|:------|:-----|:----|:-----------|
 | url | String | - | 是 | 网络请求地址（url长度限制为7868） | v0.3.0 |
 | headers | Object | - | 否 | 网络请求头的key和value属性必须是String类型 | v0.3.0 |
-| responseType | String | json | 否 | 网络请求数据类型（json） | v0.3.0 |
 | timeout | Integer | 5000 | 否 | 网络请求超时时间（单位ms） | v0.3.0 |
 | success | Function | - | 是 | 网络请求成功返回结果回调参数 | v0.3.0 |
 | fail | Function | - | 否 | 网络请求失败返回结果回调参数 | v0.3.0 |
