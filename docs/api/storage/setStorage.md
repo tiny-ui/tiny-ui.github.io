@@ -1,24 +1,24 @@
 ---
 layout: default
-title: setStorage
+title: set
 nav_order: 1
 parent: 存储
 grand_parent: API
 
 ---
 
-# setStorage
+# set
 ## 说明
 根据传入的key值和value值，保存在缓存中。（存在于整个应用生命周期中，即关闭 -> 重新打开应用后，缓存依然存在）
 
 ## 使用
 ```javascript
-TinyAPI.cache.setStorage(key, value);
+TinyAPI.storage.set(key, value);
 ```
 
 ## 示例
 ```javascript
-TinyAPI.cahce.setStorage("arg", "test123")
+TinyAPI.storage.set("arg", "test123")
 ```
 
 ## 参数
