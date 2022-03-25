@@ -8,7 +8,7 @@ nav_order: 2
 一个 `hello world` 的例子：
 
 ```jsx
-// 1. 定义页面元素
+// 1. 页面元素
 const page = () => {
     return (
         <column id="container">
@@ -17,7 +17,7 @@ const page = () => {
     );
 }
 
-// 2. 渲染入口方法
+// 2. 开始渲染
 TinyUI.render(page());
 ```
 
