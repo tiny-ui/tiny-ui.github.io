@@ -1,5 +1,5 @@
 # TinyUI 项目网站
-https://tiny-ui.com
+[tiny-ui.com](https://tiny-ui.com)
 
 ## 协作
 网站基于 `GitHub Pages` 和 `Jekyll`，主题是 `just-docs`，如果不需要本地运行网站的话，无需安装相关环境，直接克隆本仓库，创建和编辑 `Markdown` 文件即可，可以参考仓库里已有的 `Markdown` 文件。
