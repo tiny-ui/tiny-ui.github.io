@@ -8,9 +8,7 @@ nav_order: 1
 
 ------
 
-TinyUI 是专注于 IoT 场景下的快速研发框架，可以简化 Android 应用构建、开发以及发布，可以使用更少的代码、更丰富的 API 功能，打造高质量的应用产品。
-
-------
+TinyUI 是一套构建高质量 IoT 应用的快速开发框架，它使用极简的 UI 信息语法、丰富的 UI 组件以及强大的 API 功能，你只需要使用一套 DSL（JavaScript） 语法，就可以快速完成应用的构建、开发和调试。
 
 <img src="/assets/images/tinyui_hello.png"/>
 
