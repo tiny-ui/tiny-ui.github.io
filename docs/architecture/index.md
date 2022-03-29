@@ -6,3 +6,5 @@ has_children: true
 ---
 
 # 架构
+
+<img src="/assets/images/architecture.png"/>
