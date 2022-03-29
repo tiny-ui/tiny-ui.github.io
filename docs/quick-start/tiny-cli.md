@@ -9,19 +9,14 @@ nav_order: 1
 ## Tiny CLI 命令集合
 
 ```shell
-tiny init /* 创建项目 */
+tiny init // 创建项目
+tiny dev // 编译并开启本地服务
+tiny build // 构建项目正式产物
+tiny dep // 更新依赖
+tiny clean // 清理项目缓存
 
-tiny dev /* 编译并开启本地服务 */
-
-tiny build /* 构建项目正式产物 */
-
-tiny dep /* 更新依赖 */
-
-tiny clean /* 清理项目缓存 */
-
-tiny -h /* 使用帮助 */
-
-tiny -v /* 查看版本 */
+tiny -h // 使用帮助
+tiny -v // 查看版本
 ```
 
 ## 安装 Tiny CLI
