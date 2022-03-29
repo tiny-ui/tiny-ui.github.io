@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 # Tiny.js 说明
-Tiny.js 是内置的一个简单的 JavaScript 库，提供给 DSL 层使用，主要包括三个对象：
+Tiny.js 是内置的一个简单的 JavaScript 库，提供给 DSL 层使用，设计原则上是逻辑简单，主要包括三个对象：
 - TinyUI ：提供 `render` 方法，将元素渲染到实际的画布中。
 - TinyDOM ：
   - 提供了 `createElement` 方法，创建一个元素。
