@@ -11,7 +11,7 @@ Tiny.js 是内置的一个简单的 JavaScript 库，提供给 DSL 层使用，�
 - TinyDOM ：
   - 提供了 `createElement` 方法，创建一个元素。
   - 定义了 ```Element``` 类，用于描述 DOM 元素以及使用方法。
-- TinyAPI ：API 功能相关，例如：网络、文件、图片等。
+- TinyAPI ：功能相关，例如：网络、文件、图片等。
 
 **需要注意的是，Element 里的方法不支持操作没有渲染到画布上的 DOM 元素**，示例如下：
 
