@@ -58,5 +58,5 @@ TinyDom.createElement("row", {
 ```
 
 ## 提示
-TinyUI的flex布局基于YogaLayout，默认样式和YogaLayout网站中的PlayGround保持一致，如果对自己布局有异议的话可以参考
-https://yogalayout.com/playground
+TinyUI的flex布局基于YogaLayout，默认样式和YogaLayout网站中的PlayGround保持一致，如果实际布局不符合预期的话，可以通过 yoga 官网提供的 playground 来验证
+[https://yogalayout.com/playground](https://yogalayout.com/playground)
