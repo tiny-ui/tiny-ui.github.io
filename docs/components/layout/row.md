@@ -1,6 +1,7 @@
 ---
 layout: default 
-title: row nav_order: 4 
+title: Row 
+nav_order: 4 
 parent: 布局 
 grand_parent: 组件 
 has_children: true
