@@ -13,7 +13,9 @@ has_children: true
 
 基于 Flex 横向布局的容器组件，内部可以放入其他子组件。
 
-> Tips: TinyUI 布局基于 yoga，可以通过官网提供的 [playground](https://yogalayout.com/playground) 来预览效果。
+```
+提示: TinyUI 布局基于 yoga，可以通过官网提供的 [playground](https://yogalayout.com/playground) 来预览效果。
+```
 
 ## 使用
 
