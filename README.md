@@ -4,6 +4,8 @@
 ## 协作
 网站基于 `GitHub Pages` 和 `Jekyll`，主题是 `just-docs`，如果不需要本地运行网站的话，无需安装相关环境，直接克隆本仓库，创建和编辑 `Markdown` 文件即可，可以参考仓库里已有的 `Markdown` 文件。
 
+> 文章编写规范请遵循：[中文技术文档的写作规范](https://github.com/ruanyf/document-style-guide)
+
 ## 目录
 **所有文档统一放置在 `docs` 目录中，按照顺序层级进行排列，最终会在网站左边的目录树中展示。**
 
