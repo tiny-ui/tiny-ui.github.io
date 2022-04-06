@@ -20,15 +20,6 @@ has_children: true
 ## 使用
 
 ```javascript
-TinyDOM.createElement(
-    "row", {},
-    TinyDOM.createElement(
-        "text", {}, "hello tiny ui"))
-```
-
-## 示例
-
-```javascript
 TinyDom.createElement("row", {
     id: "row",
     style: {
@@ -45,7 +36,15 @@ TinyDom.createElement("row", {
         position: 'relative'
     }
 });
+```
 
+## 示例
+
+```javascript
+TinyDOM.createElement(
+    "row", {},
+    TinyDOM.createElement(
+        "text", {}, "hello tiny ui"))
 ```
 
 ## 参数
