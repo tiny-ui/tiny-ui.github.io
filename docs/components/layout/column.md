@@ -11,7 +11,7 @@ has_children: true
 
 ## 说明
 
-基于flex 竖向布局的容器组件，内部可以放入其他子组件。
+基于 flex 竖向布局的容器组件，内部可以放入其他子组件。
 ```
 提示: TinyUI 布局基于 yoga，可以通过官网提供的 [playground](https://yogalayout.com/playground) 来预览效果。
 ```
@@ -58,4 +58,4 @@ TinyDOM.createElement(
 |   flexBasis    | number、string |    auto    |                   子控件在进行拉伸和收缩计算前的基础尺寸                    |                                       无                                        |
 |   alignSelf    |    string     |    auto    |                      子控件在交叉轴上的对齐方式                       |             'flex-start','flex-end','center','baseline','stretch'              |
 |    overflow    |    string     |  visible   |                      子控件超出父容器部分是否显示                      |                               'hidden','visible'                               |
-|    position    |    string     |  relative  |               布局方式，分相对布局和绝对布局，相对布局即flex布局                |                             'relative','absolute'                              |
+|    position    |    string     |  relative  |              布局方式，分相对布局和绝对布局，相对布局即 flex 布局               |                             'relative','absolute'                              |
