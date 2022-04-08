@@ -1,27 +1,25 @@
 ---
-layout: default 
-title: Row 
-nav_order: 4 
-parent: 布局 
-grand_parent: 组件 
+layout: default
+title: Column
+nav_order: 2
+parent: 布局
+grand_parent: 组件
 has_children: true
 ---
 
-# Row
+# Column
 
 ## 说明
 
-基于 Flex 横向布局的容器组件，内部可以放入其他子组件。
-
+基于 flex 竖向布局的容器组件，内部可以放入其他子组件。
 ```
 提示: TinyUI 布局基于 yoga，可以通过官网提供的 [playground](https://yogalayout.com/playground) 来预览效果。
 ```
 
 ## 使用
-
 ```javascript
-TinyDOM.createElement("row", {
-    id: "row",
+TinyDOM.createElement("column", {
+    id: "column",
     style: {
         flex: 1,
         justifyContent: 'flex-start',
@@ -36,13 +34,12 @@ TinyDOM.createElement("row", {
         position: 'relative'
     }
 });
+
 ```
-
 ## 示例
-
 ```javascript
 TinyDOM.createElement(
-    "row", {},
+    "column", {},
     TinyDOM.createElement(
         "text", {}, "hello tiny ui"))
 ```
