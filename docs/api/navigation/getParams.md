@@ -13,14 +13,14 @@ grand_parent: API
 
 ## 使用
 ```javascript
-let result = TinyAPI.router.getParams();
+let result = TinyAPI.navigation.getParams();
 ```
 
 ## 示例
 ```javascript
 // 跳转新页面（所有选项）
-let result = TinyAPI.router.getParams();
-console.log(JSON.stringify(result));
+let result = TinyAPI.navigation.getParams();
+console.log(result);
 ```
 
 ## 参数

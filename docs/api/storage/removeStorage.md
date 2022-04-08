@@ -1,24 +1,24 @@
 ---
 layout: default
-title: removeStorage
+title: remove
 nav_order: 3
 parent: 存储
 grand_parent: API
 
 ---
 
-# removeStorage
+# remove
 ## 说明
 根据传入的key值，移除对应缓存值
 
 ## 使用
 ```javascript
-TinyAPI.cache.removeStorage(key);
+TinyAPI.storage.remove(key);
 ```
 
 ## 示例
 ```javascript
-TinyAPI.cahce.removeStorage("arg");
+TinyAPI.storage.remove("arg");
 ```
     
 ## 参数

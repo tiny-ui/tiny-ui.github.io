@@ -1,24 +1,24 @@
 ---
 layout: default
-title: getStorage
+title: get
 nav_order: 2
 parent: 存储
 grand_parent: API
 
 ---
 
-# getStorage
+# get
 ## 说明
 根据传入的key值，获取对应缓存值
 
 ## 使用
 ```javascript
-let result = TinyAPI.cache.getStorage(key);
+let result = TinyAPI.storage.get(key);
 ```
 
 ## 示例
 ```javascript
-let result = TinyAPI.cahce.getStorage("arg");
+let result = TinyAPI.storage.get("arg");
 
 console.log("this is value:" + result);
 ```
