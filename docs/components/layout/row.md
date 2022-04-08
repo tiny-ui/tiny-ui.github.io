@@ -20,7 +20,7 @@ has_children: true
 ## 使用
 
 ```javascript
-TinyDom.createElement("row", {
+TinyDOM.createElement("row", {
     id: "row",
     style: {
         flex: 1,
