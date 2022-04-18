@@ -35,3 +35,14 @@ console.warn(...args);
 console.error(...args);
 // 对应 Android Error 级别日志
 ```
+
+提示：
+```javascript
+console.log('1' + obj);// 会输出 `1[object Object]`，而不是 `1{ obj 内容 }}`
+
+// 方式1. 可以使用 JSON.stringify 来输出对象
+console.log('1' + JSON.stringify(obj));
+
+// 方式2. 建议使用以下方式
+console.log('1', obj);
+```
