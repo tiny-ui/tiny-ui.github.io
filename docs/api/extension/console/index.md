@@ -18,22 +18,20 @@ grand_parent: API
 {:toc}
 
 ## 说明
-`Console`对象提供了 Android 调试日志打印的接口，可以从全局对象中访问到。提供了5个级别的日志输出格式。
+`Console` 对象是浏览器控制台调试的接口，在不同平台上它的工作方式不太一样，`TinyUI` 适配了其中较多使用的五个方法。 
+`Console` 可以从全局对象中访问到，提供了5个级别的日志输出格式。
 
 ## 使用
 ```javascript
-console.log(...args);
-console.debug(...args);
-// 对应 Android Debug 级别日志
+console.log(...args); // 打印内容的通用方法
 
-console.info(...args);
-// 对应 Android Verbose 级别日志
+console.debug(...args); // 在控制台打印一条 "debug" 级别的消息。
 
-console.warn(...args);
-// 对应 Android Warn 级别日志
+console.info(...args); // 打印说明信息
 
-console.error(...args);
-// 对应 Android Error 级别日志
+console.warn(...args); // 打印一个警告信息
+
+console.error(...args); // 打印一条错误信息
 ```
 
 需要注意的是：
