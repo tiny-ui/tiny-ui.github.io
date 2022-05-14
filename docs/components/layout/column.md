@@ -4,7 +4,6 @@ title: Column
 nav_order: 2
 parent: 布局
 grand_parent: 组件
-has_children: true
 ---
 
 # Column
