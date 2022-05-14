@@ -1,10 +1,9 @@
 ---
 layout: default
 title: Icon
-nav_order: 2
+nav_order: 5
 parent: 基础
 grand_parent: 组件
-has_children: true
 ---
 
 # Icon
@@ -26,6 +25,6 @@ TinyDOM.createElement('icon', {
 
 | 属性 | 类型     | 默认值 | 必填 | 说明             | 最低版本支持   |
 |:----|:-------|:------|:-----|:---------------|:---------|
-| name | string | - | - | icon 名称，必须存在 font 文件中 | v0.3.0 |
-| size | number | - | - | icon 大小 | v0.3.0 |
-| color | string | - | - | icon 颜色 | v0.3.0 |
+| name | string |  |  | icon 名称，必须存在 font 文件中 | v0.3.0 |
+| size | number |  |  | icon 大小 | v0.3.0 |
+| color | string |  |  | icon 颜色 | v0.3.0 |
