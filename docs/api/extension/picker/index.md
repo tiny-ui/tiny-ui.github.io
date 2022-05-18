@@ -11,36 +11,81 @@ grand_parent: API
 
 展示选择器弹窗视图.
 
-## 使用
-
-```javascript
-let controller = TinyAPI.picker.showPicker({})
-```
-
-
-## picker controller
-
-controller 是调用 showPicker 函数返回的一个js object,用于控制picker.
+## 基本使用
 
 ```javascript
 let controller = TinyAPI.picker.showPicker({
+    //禁用点击蒙层关闭picker
+    closeOnMaskClick: false,
+    // 设置x轴偏移量,分别给第一列设置10,第二列设置20,第三列设置10
+    textXOffset: [10, 20, 10],
+    // 设置分割线类型 
+    dividerType: "warp",
+    // 设置分割线颜色 
+    dividerColor: "red",
+    // 设置滚轮选中文本颜色 
+    textColorCenter: "red",
+    // 设置滚轮选未选中文本颜色 
+    textColorOut: "white",
+    // 设置标题颜色 
+    titleColor: "white",
+    // 设置取消按钮颜色
+    cancelColor: "white",
+    // 取消按钮文本
+    cancelText: "cancelText",
+    // 确认按钮颜色    
+    submitColor: "white",
+    // 确认按钮文案
+    confirmText: "confirmText",
+    // 标题文本大小
+    titleSize:20,
+    // 标题文本
+    title: "title",
+    // 确认、取消 文本大小
+    subCalSize: 40,
+    // 滚轮文字大小
+    contentSize: 40,
+    // 滚轮间距设置（1.2-2.0倍，此为文字高度的间距倍数)
+    lineSpacingMultiplier:[2.0,1.0,1.0],
+    // 滚轮默认选中位置 设置第一列默认选中第0个,第二列第1个,第三列第0个
+    defaultValue:[0,1,0],
     columns: {
         column1: ["北京", "上海", "广州"],
         column2: ["朝阳区", "丰台区", "海淀区"],
         column3: ["朝阳a", "朝阳b", "朝阳c",]
     },
+    // 确认回调
+    onConfirm: function (column1Index, column2Index, column3Index) {
+        //column1Index 第一列选中索引.
+        //column2Index 第二列选中索引.
+        //column3Index 第三列选中索引.
+    },
+    // 选中回调
+    onSelect: function (column1Index, column2Index, column3Index) {
+        //column1Index 第一列选中索引.
+        //column2Index 第二列选中索引.
+        //column3Index 第三列选中索引.
+    },
+    // 取消回调
+    onCancel: function () {
+
+    },
+    // 关闭回调
+    onClose: function () {
+
+    },
 })
 
 // 第一列默认选中位置
-let column1DefaultValue = controller.column1DefaultValue()
+let column1DefaultValue = controller.column1DefaultValue
 // 第二列默认选中位置
-let column2DefaultValue = controller.column2DefaultValue()
+let column2DefaultValue = controller.column2DefaultValue
 // 第三列默认选中位置
-let column3DefaultValue = controller.column3DefaultValue()
+let column3DefaultValue = controller.column3DefaultValue
 
 // 北京,丰台区,朝阳 C
 // 选中第1列的0个 item,第二列的第1个 item,第三列的第2个item.
-controller.setSelect([0, 1, 2]);
+controller.setSelect(0, 1, 2);
 
 // 关闭浮层
 setTimeout(function () {
@@ -50,890 +95,109 @@ setTimeout(function () {
 ```
 
 
-
-## linkage
-
-是否开启联动
+## 滚轮联动
 
 ```javascript
-TinyAPI.picker.showPicker({
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## textXOffset
-
-设置滚轮x轴偏移量
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 设置x轴偏移量,分别给第一列设置10,第二列设置20,第三列设置10
-    textXOffset: [10, 20, 10],
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## dividerType
-
-设置分割线类型
-
-```javascript
-TinyAPI.picker.showPicker({
-    dividerType: "warp",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## dividerColor
-
-设置分割线颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    dividerColor: "red",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## textColorCenter
-
-设置滚轮选中位置文本颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    textColorCenter: "red",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## textColorOut
-
-设置滚轮未选中文本颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    textColorOut: "white",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## titleColor
-
-标题文本颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    titleColor: "white",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## cancelColor
-
-取消按钮文本颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    cancelColor: "white",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## submitColor
-
-确认按钮颜色
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    submitColor: "white",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## titleSize
-
-标题大小
-
-```javascript
-TinyAPI.picker.showPicker({
-    // 支持#ffffff 、red ,rgb(255,255,255),rgba(255,255,255,1)
-    titleSize: 50,
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## subCalSize
-
-取消 确认按钮大小.
-
-```javascript
-TinyAPI.picker.showPicker({
-
-    subCalSize: 40,
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## contentSize
-
-滚轮文字大小设置
-
-```javascript
-TinyAPI.picker.showPicker({
-
-    contentSize: 40,
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## lineSpacingMultiplier
-
-滚轮间距设置（1.2-2.0倍，此为文字高度的间距倍数)
-
-```javascript
-TinyAPI.picker.showPicker({
-
-    lineSpacingMultiplier: 2.0,
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## defaultValue
-
-滚轮默认选中位置
-
-```javascript
-TinyAPI.picker.showPicker({
-    //设置第一列默认选中第0个,第二列第1个,第三列第0个
-    defaultValue: [0, 1, 0],
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## closeOnMaskClick
-
-是否允许点击蒙层关闭picker
-
-```javascript
-TinyAPI.picker.showPicker({
+let controller = TinyAPI.picker.showPicker({
     //禁用点击蒙层关闭picker
     closeOnMaskClick: false,
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## confirmText
-
-确认按钮文本.
-
-```javascript
-TinyAPI.picker.showPicker({
-    confirmText: "confirmText",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## cancelText
-
-取消按钮文本
-
-```javascript
-TinyAPI.picker.showPicker({
+    // 设置x轴偏移量,分别给第一列设置10,第二列设置20,第三列设置10
+    textXOffset: [10, 20, 10],
+    // 设置分割线类型 
+    dividerType: "warp",
+    // 设置分割线颜色 
+    dividerColor: "red",
+    // 设置滚轮选中文本颜色 
+    textColorCenter: "yellow",
+    // 设置滚轮选未选中文本颜色 
+    textColorOut: "red",
+    // 设置标题颜色 
+    titleColor: "red",
+    // 设置取消按钮颜色
+    cancelColor: "red",
+    // 取消按钮文本
     cancelText: "cancelText",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-## title
-
-标题文本
-
-```javascript
-TinyAPI.picker.showPicker({
-
+    // 确认按钮颜色    
+    submitColor: "red",
+    // 确认按钮文案
+    confirmText: "confirmText",
+    // 标题文本大小
+    titleSize:15,
+    // 标题文本
     title: "title",
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
+    // 确认、取消 文本大小
+    subCalSize: 10,
+    // 滚轮文字大小
+    contentSize: 10,
+    // 滚轮间距设置（1.2-2.0倍，此为文字高度的间距倍数)
+    lineSpacingMultiplier:[2.0,1.0,1.0],
+    // 滚轮默认选中位置 设置第一列默认选中第0个,第二列第1个,第三列第0个
+    defaultValue:[0,1,0],
+    // 开启联动
+    linkage: true,
+    columns:  {
+        //注意这里的多维数组
+        column1: ["北京", "上海", "广州"],
+        column2: [
+            ["朝阳区", "丰台区", "海淀区"],
+            ["浦东", "杨浦"],
+            ["白云", "天河", "越秀"],
+        ],
+        column3: [
+            [
+                ["朝阳a", "朝阳b", "朝阳c",],
+                ["丰台a", "丰台b", "丰台c"],
+                ["海淀a", "海淀b", "海淀c",],
             ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## onConfirm
-
-确认选择回调
-
-```javascript
-TinyAPI.picker.showPicker({
-    //column1Index 第一列选中索引.
-    //column2Index 第二列选中索引.
-    //column3Index 第三列选中索引.
+            [
+                ["浦东a", "浦东b", "浦东c", "浦东d",],
+                ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
+            ],
+            , [
+                ["白云a", "白云b", "白云c"],
+                ["天河a", "天河b", "天河c"],
+                ["越秀a"],
+            ],
+        ]
+    },
+    // 确认回调
     onConfirm: function (column1Index, column2Index, column3Index) {
-
+        //column1Index 第一列选中索引.
+        //column2Index 第二列选中索引.
+        //column3Index 第三列选中索引.
     },
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## onSelect
-
-滚轮选中回调
-
-```javascript
-TinyAPI.picker.showPicker({
-    //column1Index 第一列选中索引.
-    //column2Index 第二列选中索引.
-    //column3Index 第三列选中索引.
+    // 选中回调
     onSelect: function (column1Index, column2Index, column3Index) {
-
+        //column1Index 第一列选中索引.
+        //column2Index 第二列选中索引.
+        //column3Index 第三列选中索引.
     },
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## onCancel
-
-用户点击取消回调
-
-```javascript
-TinyAPI.picker.showPicker({
+    // 取消回调
     onCancel: function () {
 
     },
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
-```
-
-
-
-## onClose
-
-picker 关闭回调
-
-```javascript
-TinyAPI.picker.showPicker({
-    //column1Index 第一列选中索引.
-    //column2Index 第二列选中索引.
-    //column3Index 第三列选中索引.
+    // 关闭回调
     onClose: function () {
-        
+
     },
-    columns:
-        {
-            linkage: true,
-            //注意这里的多维数组
-            column1: ["北京", "上海", "广州"],
-            column2: [
-                ["朝阳区", "丰台区", "海淀区"],
-                ["浦东", "杨浦"],
-                ["白云", "天河", "越秀"],
-            ],
-            column3: [
-                [
-                    ["朝阳a", "朝阳b", "朝阳c",],
-                    ["丰台a", "丰台b", "丰台c"],
-                    ["海淀a", "海淀b", "海淀c",],
-                ],
-                [
-                    ["浦东a", "浦东b", "浦东c", "浦东d",],
-                    ["杨浦a", "杨浦b", "杨浦c", "杨浦d",],
-                ],
-                , [
-                    ["白云a", "白云b", "白云c"],
-                    ["天河a", "天河b", "天河c"],
-                    ["越秀a"],
-                ],
-            ]
-        }
-});
+})
+
+// 第一列默认选中位置
+let column1DefaultValue = controller.column1DefaultValue
+// 第二列默认选中位置
+let column2DefaultValue = controller.column2DefaultValue
+// 第三列默认选中位置
+let column3DefaultValue = controller.column3DefaultValue
+
+// 北京,丰台区,朝阳 C
+// 选中第1列的0个 item,第二列的第1个 item,第三列的第2个item.
+controller.setSelect(0, 1, 2);
+
+// 关闭浮层
+setTimeout(function () {
+    controller.close();
+}, 3000)
+
 ```
 
 ## 参数
