@@ -2,7 +2,7 @@
 layout: default
 title: Tiny.js
 parent: 架构
-nav_order: 1
+nav_order: 6
 ---
 
 # Tiny.js 说明
