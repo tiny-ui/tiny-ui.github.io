@@ -2,7 +2,7 @@
 layout: default
 title: album
 nav_order: 1
-parent: 图片
+parent: 媒体
 grand_parent: API
 ---
 
@@ -44,7 +44,7 @@ console.log(data);
 //         "isGalleryEnabledMask":false,
 //         "isMaxSelectEnabledMask":false,
 //         "isOriginal":true,
-//         "mimeType":"image/png",
+//         "mimeType":"media/png",
 //         "num":1,
 //         "originalPath":"content://media/external/images/media/2069553",
 //         "parentFolderName":"Screenshots",

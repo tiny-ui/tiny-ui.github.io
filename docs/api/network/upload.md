@@ -35,7 +35,7 @@ var data = [
         "isGalleryEnabledMask":false,
         "isMaxSelectEnabledMask":false,
         "isOriginal":true,
-        "mimeType":"image/png",
+        "mimeType":"media/png",
         "num":1,
         "originalPath":"content://media/external/images/media/2069553",
         "parentFolderName":"Screenshots",
