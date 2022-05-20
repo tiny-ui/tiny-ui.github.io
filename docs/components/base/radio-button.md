@@ -38,7 +38,8 @@ TinyUI.render(demo());
 | colors | object   |      |    | 详见 colors 说明        | |
 
 ## colors
+
 | 属性 | 类型 | 说明  |
-| ---- | -------- | ------ |
+| :--- | :--- | :--- |
 |checkedColor|string|选中颜色|
 |normalColor|string|未选中颜色|

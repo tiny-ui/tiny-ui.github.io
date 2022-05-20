@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ViewPage
+title: TabViewPage
 nav_order: 6
 parent: 扩展
 grand_parent: 组件
