@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 剪贴板
+title: clip
 nav_order: 1
 parent: 设备
 grand_parent: API
 ---
 
-# 剪贴板
+# clip
 
 {: .no_toc }
 

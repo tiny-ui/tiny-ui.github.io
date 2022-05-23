@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 网络状态
+title: network type
 nav_order: 2
 parent: 设备
 grand_parent: API
 ---
 
-# 网络状态
+# network type
 
 {: .no_toc }
 
