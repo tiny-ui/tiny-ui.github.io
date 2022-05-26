@@ -9,7 +9,7 @@ grand_parent: API
 
 # get
 ## 说明
-根据传入的key值，获取对应缓存值
+根据传入的key值，获取对应持久化存储值
 
 ## 使用
 ```javascript

@@ -1,28 +1,19 @@
 ---
 layout: default
-title: album
-nav_order: 1
+title: camera
+nav_order: 2
 parent: 媒体
 grand_parent: API
 ---
 
-# select
+# camera
 ## 说明
-打开手机图库，选择/拍摄图片
+打开手机摄像头
 
 ## 示例
 ```javascript
-var data;
-TinyAPI.album.select(
-    {
-        result: function (res) {
-            data = res;
-        }
-    }
-);
+TinyAPI.album.camera((res) => {console.log(res)});
 
-console.log(data);
-// [
 //     {
 //         "bucketId":1028075469,
 //         "chooseModel":1,
@@ -55,26 +46,19 @@ console.log(data);
 //         "size":273130,
 //         "width":659
 //     }
-// ]
 ```
 
 ## 入参
 
-| 属性名          | 类型       | 属性说明     | 必填  | 默认值     | 取值范围                 |
-|:-------------|:---------|:---------|:----|:--------|:---------------------|
-| theme        | string   | 主题       | 否   | default | light, dark, default |
-| origin       | boolean  | 可选原图     | 否   | true    | true, false          |
-| compress     | boolean  | 压缩图片     | 否   | false   | true, false          |
-| maxSelectNum | integer  | 最多选择图片数量 | 否   | 9       |   |
-| minSelectNum | integer  | 最少选择图片数量 | 否   | 0       |   |
-| result       | function | 已选图片信息   | 是   |         |   |
-| selected     | arrays   | 上一次已选图片  | 否   |         |   |
+| 属性名          | 类型       | 属性说明   | 必填  | 默认值     | 取值范围                 |
+|:-------------|:---------|:-------|:----|:--------|:---------------------|
+| callback     | function | 拍照结果回调 | 是   |  |  |
 
 ## `result`入参
 
-| 属性名    | 类型     | 属性说明                      | 必填  | 默认值     | 取值范围                 |
-|:-------|:-------|:--------------------------|:----|:--------|:---------------------|
-| res    | object | 已选图片信息（如果取消选择则返回"cancel"） |     |  |  |
+| 属性名    | 类型     | 属性说明                    | 必填  | 默认值     | 取值范围                 |
+|:-------|:-------|:------------------------|:----|:--------|:---------------------|
+| res    | object | 图片信息 |     |  |  |
 
 ## `res`参数
 
