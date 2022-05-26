@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 应用级事件
+title: 页面生命周期
 nav_order: 2
 parent: 基础
 grand_parent: API
@@ -20,7 +20,7 @@ grand_parent: API
 # 页面生命周期
 
 ## 说明
-注册app页面生命周期
+注册页面生命周期
 
 ## 使用
 ```javascript
