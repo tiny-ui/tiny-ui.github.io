@@ -47,3 +47,4 @@ TinyUI.render(TinyDOM.createElement(
 | placeholder | string   |   false   |    | 输入文本为空时显示的文本         |
 | letterSpacing | number   |      | 字间距（标准字体大小的倍数，单位是em）   | 字体的大小         |
 | lineSpacing | number   |    1  | 是   | 行间距         |
+| inputType | string   |      | "number","numberPassword","phone","text","textEmailAddress","textPassword","textVisiblePassword"  | 输入文本类型         |

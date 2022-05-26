@@ -9,7 +9,7 @@ grand_parent: API
 
 # clear
 ## 说明
-清空所有缓存
+清空所有持久化存储
 
 ## 使用
 ```javascript

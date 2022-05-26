@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 设备
-nav_order: 7
+title: 事件
+nav_order: 10
 parent: API
 has_children: true
 ---

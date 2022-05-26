@@ -1,12 +1,12 @@
 ---
 layout: default
-title: 设备信息
+title: device info
 nav_order: 3
 parent: 设备
 grand_parent: API
 ---
 
-# 设备信息
+# device info
 
 ## 说明
 获取当前设备信息

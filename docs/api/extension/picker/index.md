@@ -1,12 +1,12 @@
 ---
 layout: default 
-title: picker 
+title: Picker 
 nav_order: 4 
 parent: 扩展 
 grand_parent: API
 ---
 
-# picker
+# Picker
 ## 说明
 
 展示选择器弹窗视图.
@@ -202,27 +202,29 @@ setTimeout(function () {
 
 ## 参数
 
-| 属性 | 类型 | 默认值 | 必填 | 说明 | 最低版本支持 |
-|:----|:----|:------|:-----|:----|:-----------|
-|columns|object|无|✅|列数据(详见demo)|v0.4.0|
-|textXOffset|array|无|❎|设置X轴偏移量，形成弧度(详见Demo)|v0.4.0|
-|dividerType|string|'fill'|❎|分隔线类型,支持:'fill','warp'|v0.4.0|
-|dividerColor|string|无|❎|分隔线颜色|v0.4.0|
-|textColorCenter|string|无|❎|选中项文字颜色设置|v0.4.0|
-|textColorOut|string|无|❎|未选中项文字颜色设置|v0.4.0|
-|titleColor|string|无|❎|标题文字颜色设置|v0.4.0|
-|cancelColor|string|无|❎|取消按钮颜色设置|v0.4.0|
-|submitColor|string|无|❎|确认文字颜色设置|v0.4.0|
-|titleSize|number(整数)|无|❎|标题文字大小设置|v0.4.0|
-|subCalSize|number(整数)|无|❎|确定、取消按钮大小设置|v0.4.0|
-|contentSize|number(整数)|无|❎|滚轮文字大小设置|v0.4.0|
-|lineSpacingMultiplier|double|无|❎|滚轮间距设置（1.2-2.0倍，此为文字高度的间距倍数）|v0.4.0|
-|linkage|bool|false|❎|是否开启列表联动|v0.4.0|
-|defaultValue|array|无|❎|默认选中位置|v0.4.0|
-|closeOnMaskClick|bool|true|❎|是否允许点击浮层关闭picker|v0.4.0|
-|confirmText|array|无|❎|确认按钮文案|v0.4.0|
-|cancelText|array|无|❎|取消按钮文案|v0.4.0|
-|title|array|无|❎|标题文案|v0.4.0|
+| 属性 | 类型 | 默认值 | 必填 | 说明 |
+|:----|:----|:------|:-----|:----|
+|columns|object|无|✅|列数据(详见demo)|
+|bgColor|string|无|❎|滚轮背景色|
+|titleBgColor|string||❎|标题栏背景色|
+|textXOffset|array|无|❎|设置X轴偏移量，形成弧度(详见Demo)|
+|dividerType|string|'fill'|❎|分隔线类型,支持:'fill','warp'|
+|dividerColor|string|无|❎|分隔线颜色|
+|textColorCenter|string|无|❎|选中项文字颜色设置|
+|textColorOut|string|无|❎|未选中项文字颜色设置|
+|titleColor|string|无|❎|标题文字颜色设置|
+|cancelColor|string|无|❎|取消按钮颜色设置|
+|submitColor|string|无|❎|确认文字颜色设置|
+|titleSize|number(整数)|无|❎|标题文字大小设置|
+|subCalSize|number(整数)|无|❎|确定、取消按钮大小设置|
+|contentSize|number(整数)|无|❎|滚轮文字大小设置|
+|lineSpacingMultiplier|double|无|❎|滚轮间距设置（1.2-2.0倍，此为文字高度的间距倍数）|
+|linkage|bool|false|❎|是否开启列表联动|
+|defaultValue|array|无|❎|默认选中位置|
+|closeOnMaskClick|bool|true|❎|是否允许点击浮层关闭picker|
+|confirmText|array|无|❎|确认按钮文案|
+|cancelText|array|无|❎|取消按钮文案|
+|title|array|无|❎|标题文案|
 |onConfirm|func|无|❎|确认选中回调|
 |onSelect|func|无|❎|选中回调|
 |onCancel|func|无|❎|取消按钮回调|
@@ -230,14 +232,14 @@ setTimeout(function () {
 
 ## columns 明细
 
-| 属性 | 类型 | 默认值 | 必填 | 说明 | 最低版本支持 |
-|:----|:----|:------|:-----|:----|:-----------|
-|column1|array|无|✅|第一列数据|v0.4.0|
-|column2|array|无|✅|第二列数据|v0.4.0|
-|column3|array|无|✅|第三列数据|v0.4.0|
-|column1Label|string|无|❎|第一列数据单位|v0.4.0|
-|column2Label|string|无|❎|第二列数据单位|v0.4.0|
-|column3Label|string|无|❎|第三列数据单位|v0.4.0|
+| 属性 | 类型 | 默认值 | 必填 | 说明 |
+|:----|:----|:------|:-----|:----|
+|column1|array|无|✅|第一列数据|
+|column2|array|无|✅|第二列数据|
+|column3|array|无|✅|第三列数据|
+|column1Label|string|无|❎|第一列数据单位|
+|column2Label|string|无|❎|第二列数据单位|
+|column3Label|string|无|❎|第三列数据单位|
 
 ## controller 属性
 

@@ -35,3 +35,11 @@ TinyUI.render(demo());
 | text | string   |      | 'normal', 'bold'   | 文本显示         |
 | disabled | boolean   |    false  |    | 禁用响应用户操作         |
 | onChange | function   |      |    | 事件监听         | |
+| colors | object   |      |    | 详见 colors 说明        | |
+
+## colors
+
+| 属性 | 类型 | 说明  |
+| :--- | :--- | :--- |
+|checkedColor|string|选中颜色|
+|normalColor|string|未选中颜色|
