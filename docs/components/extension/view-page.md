@@ -44,6 +44,9 @@ app = () => {
 TinyUI.render(app());
 ```
 
+## 截图
+<img src="/assets/images/pageView.png"/>
+
 ## 参数
 
 | 属性          |    类型    | 必填  | 默认值 | 取值范围 |      说明      |
