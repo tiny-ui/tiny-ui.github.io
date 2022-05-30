@@ -15,34 +15,6 @@ grand_parent: 组件
 基础列表使用
 
 ```javascript
-// 创建item视图框架
-function onCreateView(itemType) {
-    return TinyDOM.createElement("column", {
-        style: {
-            height: 200,
-            width: "100%",
-        }
-    }, TinyDOM.createElement("text", {
-        style: {
-            height: 200,
-            width: "100%",
-        },
-        // 这个id十分关键
-        id: "tv_text",
-    }));
-}
-
-// 给 onCreateView 函数创建好的视图框架赋值
-function onBindView(data, position, itemType, element) {
-    // 通过viewholder 给id为tv_text的控件的text属性赋值.
-    element.getElementById("tv_text").setAttribute("text", data);
-    if(position%2==0){
-        element.getElementById("tv_text").setStyle("backgroundColor", "green");
-    }else{
-        element.getElementById("tv_text").setStyle("backgroundColor","red");
-    }
-}
-
 function list() {
     return TinyDOM.createElement("column", {
         style: {
@@ -56,9 +28,10 @@ function list() {
                 width: "100%",
                 height: "100%",
             },
-            data: ["1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3"],
-            onCreateView: onCreateView,
-            onBindView: onBindView,
+            renderItem: (id, index) => { // id为item父布局的id，index为目前所在的item的位置
+                return TinyDOM.createElement("text", {}, "hello sunmi position: " + index)
+            },
+            itemCount: 100
         })
     );
 }
@@ -68,12 +41,7 @@ TinyUI.render(list());
 
 ## 参数
 
-| 属性 | 类型     | 默认值 | 取值范围 | 说明  |
-| ---- | -------- | ------ | ---- | --------------- |
-| data | array   |      |    | list渲染业务数据数组.         | 
-| orientation | string   |  'vertical'    | 'vertical', 'horizontal' | 设置布局方向 |
-| onRefresh | function   |     |   | 触发下拉刷新时调用.         |
-| onLoadMore | function   |      |    | 触发上拉加载时调用.         |
-| itemType | function   |      |   | 根据传入的index数据获取index对应的item类型,并返回.    |
-| onCreateView | function   |      |    | 创建item视图框架         |
-| onBindView | function   |     |    | 给onCreateView 创建好的视图框架填充数据         |
+| 属性 | 类型       | 默认值 | 取值范围 | 说明                                |
+| ---- |----------| ------ | ---- |-----------------------------------|
+| renderItem | function |      |    | 列表渲染方法                            |
+| itemCount | number   |      |    | 列表item数量                          |
