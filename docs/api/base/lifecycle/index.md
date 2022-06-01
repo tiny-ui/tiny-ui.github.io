@@ -17,15 +17,9 @@ grand_parent: API
 1. TOC
 {:toc}
 
-# 页面生命周期
-
+# 注册页面生命周期
 ## 说明
 注册页面生命周期
-
-## 使用
-```javascript
-TinyAPI.base.registerLifecycle(name, callback);
-```
 
 ## 示例
 ```javascript
@@ -53,11 +47,49 @@ TinyAPI.base.registerLifecycle("onStop", () => {
 TinyAPI.base.registerLifecycle("onDestroy", () => {
     console.log("this is onDestroy callback");
 })
+
+// 页面回退
+TinyAPI.base.registerLifecycle("onBack", () => {
+    console.log("this is onBack callback");
+})
 ```
 
 ## 参数
 
-| 属性 | 类型 | 默认值 | 必填 | 说明                                                       | 最低版本支持 |
-|:----|:----|:------|:-----|:---------------------------------------------------------|:-----------|
-| name | String | - | 是 | 对应的生命周期名称（目前支持onStart、onResume、onPause、onStop、onDestroy） | v0.3.0 |
-| callback | Function | - | 是 | 在对应时期执行的方法                                               | v0.3.0 |
+| 属性名      | 类型       | 属性说明                                                      | 必填 | 默认值                                                      | 取值范围   |
+|:---------|:---------|:----------------------------------------------------------|:-----|:---------------------------------------------------------|:-------|
+| name     | string   | 对应的生命周期名称                                                 | 是 |  | onStart、onResume、onPause、onStop、onDestroy、onBack |
+| callback | function | 在对应时期执行的方法                                                | 是 |                                               |  |
+
+{:toc}
+
+# 取消注册生命周期
+## 说明
+取消注册生命周期
+
+## 示例
+```javascript
+// 取消注册onStart事件
+TinyAPI.base.unregisterLifecycle("onStart")
+
+// 取消注册onResume事件
+TinyAPI.base.unregisterLifecycle("onResume")
+
+// 取消注册onPause事件
+TinyAPI.base.unregisterLifecycle("onPause")
+
+// 取消注册onStop事件
+TinyAPI.base.unregisterLifecycle("onStop")
+
+// 取消注册onDestroy事件
+TinyAPI.base.unregisterLifecycle("onDestroy")
+
+// 取消注册onBack事件
+TinyAPI.base.unregisterLifecycle("onBack")
+```
+
+## 参数
+
+| 属性名      | 类型       | 属性说明                                                     | 必填 | 默认值                                                     | 取值范围   |
+|:---------|:---------|:---------------------------------------------------------|:-----|:--------------------------------------------------------|:-------|
+| name     | string   | 对应的生命周期名称 | 是 |                                                         |                onStart、onResume、onPause、onStop、onDestroy、onBack                       |  |
