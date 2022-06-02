@@ -63,6 +63,7 @@ var result = TinyAPI.iot.getService({
     }
 });
 
+// result:
 // [
 //    {
 //       "deviceId":"VB03211P26005",
@@ -105,6 +106,19 @@ var result = TinyAPI.iot.getService({
 ```javascript
 TinyAPI.iot.registerServiceChange({
     type: "printer",
+    add: (res) => {
+        console.log(res);
+// res:
+//    {
+//       "deviceId":"VB03211P26005",
+//       "isAuth":false,
+//       "serviceId":"thermal_printer",
+//       "serviceType":"printer"
+//    }
+    },
+    offline: (s1, s2) => {
+
+    },
     fail: (error) => {
         console.log(error)
     }
@@ -119,6 +133,22 @@ TinyAPI.iot.registerServiceChange({
 | add     | function | 服务添加回调                 | 否   |  |      |
 | offline | function | 服务下线回调                 | 否   |  |      |
 | fail    | function | 调用失败回调                 | 否   |  |      |
+
+## `add`入参
+
+| 属性名 | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------------------|:----|:----------------------------|:-----|
+| deviceId    | string  | 设备id |     |  |      |
+| isAuth      | boolean | 是否校验 |     |  |      |
+| serviceId   | string  | 服务id |     |  |      |
+| serviceType | string  | 服务类型 |     |  |      |
+
+## `offline`入参
+
+| 属性名 | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------------------|:----|:----------------------------|:-----|
+| s1  | string |  |     |  |      |
+| s2  | string |  |     |  |      |
 
 {:toc}
 
@@ -146,6 +176,14 @@ TinyAPI.iot.registerServiceEvent({
 | event     | function | `IServiceEventListener` 监听回调                 | 否   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
 
+## `event`入参
+
+| 属性名 | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------------------|:----|:----------------------------|:-----|
+| s   | string |  |     |  |      |
+| s1  | string |  |     |  |      |
+| s2  | string |  |     |  |      |
+
 {:toc}
 
 # registerServiceProperty
@@ -172,6 +210,14 @@ TinyAPI.iot.registerServiceProperty({
 | event     | function | `IServiceEventListener` 监听回调                 | 否   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
 
+## `event`入参
+
+| 属性名 | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------------------|:----|:----------------------------|:-----|
+| s   | string |  |     |  |      |
+| s1  | string |  |     |  |      |
+| s2  | string |  |     |  |      |
+
 {:toc}
 
 # executeCommand
@@ -180,30 +226,28 @@ TinyAPI.iot.registerServiceProperty({
 
 ## 示例
 ```javascript
-TinyAPI.iot.executeCommand({
-    thing: "VB03211P26005",
-    params: "thermal_printer",
+let result = TinyAPI.iot.executeCommand({
+    thing: thing,
+    params: params,
     fail: (error) => {
         console.log(error)
     }
 });
 
-// thing:
-// {
-//    "deviceId":"VB03211P26005",
-//         "isAuth":false,
-//         "serviceId":"thermal_printer",
-//         "serviceType":"printer"
-// }
-// params:
-// {
-//    "command":"print",
-//         "params":{
-//    "line":[
-//       "{\"align\":1,\"anticolor\":1,\"bold\":1,\"size\":28,\"text\":\"SUNMI TEST PRINTER!!!\",\"textspace\":0,\"type\":1,\"underline\":0,\"command\":\"print_text\"}"
-//    ]
-// }
-// }
+var thing =
+{
+   "deviceId":"VB03211P26005",
+        "isAuth":false,
+        "serviceId":"thermal_printer",
+        "serviceType":"printer"
+}
+var params =
+"\"command\":\"print\",\"params\":{\"line\":[\"{\"align\":1,\"anticolor\":1,\"bold\":1,\"size\":28,\"text\":\"SUNMI TEST PRINTER!!!\",\"textspace\":0,\"type\":1,\"underline\":0,\"command\":\"print_text\"}\"]}";
+
+//  s:
+//  11379289203296cff-b16f-4d2c-a4dd-a3c9af6cd2e4
+//  map:
+//  { action_type: command, deviceID: PB08203460291, action: execute, serviceID: thermal_printer, response: {"code":200,"data":{"code":"printer_0000","command":"print","msg":"打印成功"},"..." }
 ```
 
 ## 入参
@@ -214,6 +258,19 @@ TinyAPI.iot.executeCommand({
 | params   | string   | 物模型描述的 `command` 参数                 | 是   |  |      |
 | response | function | `IServiceEventListener` 监听回调                 | 否   |  |      |
 | fail     | function | 调用失败回调                 | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:-----------------------|:----|:----------------------------|:-----|
+| result | string | 本次调用的唯一标识符，与回调第一个参数对应 | 是   |  |      |
+
+## `response`入参
+
+| 属性名 | 类型     | 属性说明       | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------|:----|:----------------------------|:-----|
+| s   | string | 本次调用的唯一标识符 |     |  |      |
+| map | obj    | 调用结果       |     |  |      |
 
 {:toc}
 
@@ -247,6 +304,13 @@ let result = TinyAPI.iot.getProperty({
 |:-------|:-------|:-----------------------|:----|:----------------------------|:-----|
 | result | string | 本次调用的唯一标识符，与回调第一个参数对应 |     |  |      |
 
+## `response`入参
+
+| 属性名 | 类型     | 属性说明       | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------|:----|:----------------------------|:-----|
+| s   | string | 本次调用的唯一标识符 |     |  |      |
+| map | obj    | 调用结果       |     |  |      |
+
 {:toc}
 
 # setProperty
@@ -278,3 +342,10 @@ let result = TinyAPI.iot.setProperty({
 | 属性名    | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
 |:-------|:-------|:-----------------------|:----|:----------------------------|:-----|
 | result | string | 本次调用的唯一标识符，与回调第一个参数对应 |     |  |      |
+
+## `response`入参
+
+| 属性名 | 类型     | 属性说明       | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------|:----|:----------------------------|:-----|
+| s   | string | 本次调用的唯一标识符 |     |  |      |
+| map | obj    | 调用结果       |     |  |      |
