@@ -13,7 +13,7 @@ grand_parent: API
 
 ## 示例
 ```javascript
-TinyAPI.device.info((res) => {console.log(res)});
+TinyAPI.device.location((res) => {console.log(res)});
 // { latitude: 37.421998333333335, longitude: -122.084 }
 ```
 
