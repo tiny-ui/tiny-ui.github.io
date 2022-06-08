@@ -67,9 +67,12 @@ var result = TinyAPI.iot.getService({
 // [
 //    {
 //       "deviceId":"VB03211P26005",
+//       "deviceType": "",
 //       "isAuth":false,
 //       "serviceId":"thermal_printer",
 //       "serviceType":"printer"
+//       "model":""
+//       "deviceName":""
 //    }
 // ]
 ```
@@ -92,9 +95,12 @@ var result = TinyAPI.iot.getService({
 | 属性名         | 类型      | 属性说明 | 必填  | 默认值                         | 取值范围 |
 |:------------|:--------|:-----|:----|:----------------------------|:-----|
 | deviceId    | string  | 设备id |     |  |      |
+| deviceType  | string  | 设备类型 |     |  |      |
 | isAuth      | boolean | 是否校验 |     |  |      |
 | serviceId   | string  | 服务id |     |  |      |
 | serviceType | string  | 服务类型 |     |  |      |
+| model       | string  |      |     |  |      |
+| deviceName  | string  | 设备名称 |     |  |      |
 
 {:toc}
 
@@ -220,6 +226,52 @@ TinyAPI.iot.registerServiceProperty({
 
 {:toc}
 
+# execute
+## 说明
+通用执行
+
+## 示例
+```javascript
+let result = TinyAPI.iot.execute({
+    thing: thing,
+    type: "command",
+    action: "execute",
+    params: params,
+    response: (s, map) => {
+        console.log(s, JSON.stringify(map))
+    },
+    fail: (error) => {
+        console.log(error)
+    }
+});
+```
+
+## 入参
+
+| 属性名      | 类型       | 属性说明                         | 必填  | 默认值                         | 取值范围                                                                                            |
+|:---------|:---------|:-----------------------------|:----|:----------------------------|:------------------------------------------------------------------------------------------------|
+| thing    | object   | 通过SDK获取的`service info`       | 是   |  |                                                                                                 |
+| type     | string   | action类型                     | 是   |  | command, commands, property                                                                     |
+| action   | string   | type对应类型                     | 是   |  | command->execute(执行command); commands->async/sync(串行/并行指令集); property->get/set(对应property获取和设置) |
+| params   | string   | 物模型描述的设置属性参数                 | 是   |  |                                                                                                 |
+| response | function | `IServiceEventListener` 监听回调 | 否   |  |                                                                                                 |
+| fail     | function | 调用失败回调                       | 否   |  |                                                                                                 |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:-----------------------|:----|:----------------------------|:-----|
+| result | string | 本次调用的唯一标识符，与回调第一个参数对应 | 是   |  |      |
+
+## `response`入参
+
+| 属性名 | 类型     | 属性说明       | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------|:----|:----------------------------|:-----|
+| s   | string | 本次调用的唯一标识符 |     |  |      |
+| map | obj    | 调用结果       |     |  |      |
+
+{:toc}
+
 # executeCommand
 ## 说明
 对指定服务执行物模型中定义的`command`。`serviceInfo`中的`deviceId`和`serviceId`必须。否则会出现找不到服务的情况
@@ -229,6 +281,9 @@ TinyAPI.iot.registerServiceProperty({
 let result = TinyAPI.iot.executeCommand({
     thing: thing,
     params: params,
+    response: (s, map) => {
+        console.log(s, JSON.stringify(map))
+    },
     fail: (error) => {
         console.log(error)
     }
@@ -242,7 +297,7 @@ var thing =
         "serviceType":"printer"
 }
 var params =
-"\"command\":\"print\",\"params\":{\"line\":[\"{\"align\":1,\"anticolor\":1,\"bold\":1,\"size\":28,\"text\":\"SUNMI TEST PRINTER!!!\",\"textspace\":0,\"type\":1,\"underline\":0,\"command\":\"print_text\"}\"]}";
+    "{\"command\":\"print_texts\",\"params\":{\"type\":6,\"columns\":[{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"名称\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"单价\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"单位\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"总价\",\"textspace\":0,\"type\":1,\"underline\":0}]}}";
 
 //  s:
 //  11379289203296cff-b16f-4d2c-a4dd-a3c9af6cd2e4
@@ -258,6 +313,65 @@ var params =
 | params   | string   | 物模型描述的 `command` 参数                 | 是   |  |      |
 | response | function | `IServiceEventListener` 监听回调                 | 否   |  |      |
 | fail     | function | 调用失败回调                 | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:-----------------------|:----|:----------------------------|:-----|
+| result | string | 本次调用的唯一标识符，与回调第一个参数对应 | 是   |  |      |
+
+## `response`入参
+
+| 属性名 | 类型     | 属性说明       | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------|:----|:----------------------------|:-----|
+| s   | string | 本次调用的唯一标识符 |     |  |      |
+| map | obj    | 调用结果       |     |  |      |
+
+{:toc}
+
+# executeCommands
+## 说明
+无序执行多个`command`
+
+## 示例
+```javascript
+let result = TinyAPI.iot.executeCommands({
+    thing: thing,
+    params: params,
+    sync: true,
+    response: (s, map) => {
+        console.log(s, JSON.stringify(map))
+    },
+    fail: (error) => {
+        console.log(error)
+    }
+});
+
+var thing =
+{
+        "deviceId":"VB03211P26005",
+        "isAuth":false,
+        "serviceId":"thermal_printer",
+        "serviceType":"printer"
+}
+var params =
+    "[{\"command\":\"print_qrcode\",\"params\":{\"size\":10,\"type\":3,\"code\":\"皇马是冠军---\u003e法兰克福也是---\u003e罗马也是\",\"el\":3,\"align\":1}},{\"command\":\"print_text\",\"params\":{\"bold\":0,\"anticolor\":0,\"align\":0,\"size\":18,\"text\":\"simple text-------------end\",\"underline\":0,\"type\":1,\"textspace\":1}},{\"command\":\"print_texts\",\"params\":{\"type\":6,\"columns\":[{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"名称\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"单价\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"单位\",\"textspace\":0,\"type\":1,\"underline\":0},{\"colsWidthArr\":1,\"command\":\"print_text\",\"align\":0,\"anticolor\":0,\"bold\":0,\"size\":24,\"text\":\"总价\",\"textspace\":0,\"type\":1,\"underline\":0}]}}]";
+
+//  s:
+//  11379289203296cff-b16f-4d2c-a4dd-a3c9af6cd2e4
+//  map:
+//  { action_type: command, deviceID: PB08203460291, action: execute, serviceID: thermal_printer, response: {"code":200,"data":{"code":"printer_0000","command":"print","msg":"打印成功"},"..." }
+```
+
+## 入参
+
+| 属性名      | 类型       | 属性说明                   | 必填  | 默认值  | 取值范围 |
+|:---------|:---------|:-----------------------|:----|:-----|:-----|
+| thing    | object   | 通过SDK获取的`service info` | 是   |      |      |
+| params   | string   | 物模型描述的 `command` 参数                 | 是   |      |      |
+| sync     | boolean  | 是否串行执行                | 否   | true |      |
+| response | function | `IServiceEventListener` 监听回调                 | 否   |      |      |
+| fail     | function | 调用失败回调                 | 否   |      |      |
 
 ## 出参
 
