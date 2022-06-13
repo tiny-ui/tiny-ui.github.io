@@ -56,14 +56,12 @@ console.log(result); // true, false
 
 ## 示例
 ```javascript
-var result = TinyAPI.iot.getService({
-    type: "printer",
-    fail: (error) => {
-        console.log(error)
-    }
-});
+var result = TinyAPI.iot.getService("printer");
 
 // result:
+// {
+//      msg: null,
+//      data:
 // [
 //    {
 //       "deviceId":"VB03211P26005",
@@ -75,6 +73,7 @@ var result = TinyAPI.iot.getService({
 //       "deviceName":""
 //    }
 // ]
+// }
 ```
 
 ## 入参
@@ -82,15 +81,15 @@ var result = TinyAPI.iot.getService({
 | 属性名  | 类型       | 属性说明                   | 必填  | 默认值                         | 取值范围 |
 |:-----|:---------|:-----------------------|:----|:----------------------------|:-----|
 | type | string   | 服务类型，类似`printer`，`scanner` | 否   |  |      |
-| fail | function | 调用失败回调                 | 否   |  |      |
 
 ## 出参
 
-| 属性名    | 类型       | 属性说明 | 必填  | 默认值                         | 取值范围 |
-|:-------|:---------|:-----|:----|:----------------------------|:-----|
-| result | arrays   | 服务数组 |     |  |      |
+| 属性名  | 类型     | 属性说明 | 必填  | 默认值                         | 取值范围 |
+|:-----|:-------|:-----|:----|:----------------------------|:-----|
+| msg  | string | 错误信息 |     |  |      |
+| data | arrays | 服务数组 |     |  |      |
 
-## `result`参数
+## `data`参数
 
 | 属性名         | 类型      | 属性说明 | 必填  | 默认值                         | 取值范围 |
 |:------------|:--------|:-----|:----|:----------------------------|:-----|
@@ -395,12 +394,20 @@ var params =
 ## 示例
 ```javascript
 let result = TinyAPI.iot.getProperty({
-    thing: "VB03211P26005",
+    thing: thing,
     params: "thermal_printer",
     fail: (error) => {
         console.log(error)
     }
 });
+
+var thing =
+    {
+        "deviceId":"VB03211P26005",
+        "isAuth":false,
+        "serviceId":"thermal_printer",
+        "serviceType":"printer"
+    }
 ```
 
 ## 入参
@@ -434,12 +441,20 @@ let result = TinyAPI.iot.getProperty({
 ## 示例
 ```javascript
 let result = TinyAPI.iot.setProperty({
-    thing: "VB03211P26005",
+    thing: thing,
     params: "thermal_printer",
     fail: (error) => {
         console.log(error)
     }
 });
+
+var thing =
+    {
+        "deviceId":"VB03211P26005",
+        "isAuth":false,
+        "serviceId":"thermal_printer",
+        "serviceType":"printer"
+    }
 ```
 
 ## 入参
