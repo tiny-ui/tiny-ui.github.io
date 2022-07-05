@@ -62,6 +62,7 @@ tabs = [
         text: "默认文字",
         selectedText: "选中文字",
         textColor: "#a2a2a2", //默认字体颜色
+        icon: "", //图片URL, 目前只支持远程图片
         selectedTextColor: "#909090", //选中字体颜色
         bgColor: "#a2a2a2", //默认背景颜色
         selectedBgColor: "#909090" //选中背景颜色
