@@ -6,6 +6,11 @@
 
 > 文章编写规范请遵循：[中文技术文档的写作规范](https://github.com/ruanyf/document-style-guide)
 
+如果想本地运行，预览网站效果的话，可以通过以下命令：
+```shell
+bundle exec jekyll serve
+```
+
 ## 目录
 **所有文档统一放置在 `docs` 目录中，按照顺序层级进行排列，最终会在网站左边的目录树中展示。**
 
