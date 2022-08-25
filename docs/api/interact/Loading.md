@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Loading
-nav_order: 4
+nav_order: 2
 parent: 交互
 grand_parent: API
 
