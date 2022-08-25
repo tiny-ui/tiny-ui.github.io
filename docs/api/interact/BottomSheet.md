@@ -1,7 +1,7 @@
 ---
 layout: default
 title: BottomSheet
-nav_order: 4
+nav_order: 6
 parent: 交互
 grand_parent: API
 

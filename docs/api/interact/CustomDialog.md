@@ -1,7 +1,7 @@
 ---
 layout: default
 title: CustomDialog
-nav_order: 4
+nav_order: 1
 parent: 交互
 grand_parent: API
 
