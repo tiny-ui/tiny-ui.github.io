@@ -20,7 +20,7 @@ TinyAPI.navigation.to(uri, options)
 ```javascript
 // 跳转新页面（所有选项）,uri需根据路由表生成填写，该模版只做参考
 TinyAPI.navigation.to(
-    "assets://cart.js",
+    "cart",
     {
         params: {
             a: 1,
@@ -34,7 +34,7 @@ TinyAPI.navigation.to(
 );
 
 // 跳转新页面（只填路径）
-TinyAPI.navigation.to("assets://com.sunmi.demo/pages/storage.js");
+TinyAPI.navigation.to("cart");
 ```
 
 ## 参数
@@ -54,9 +54,9 @@ TinyAPI.navigation.to("assets://com.sunmi.demo/pages/storage.js");
 
 ### schema参数
 
-| 属性     | 类型     | 默认值 | 必填  | 说明                                       | 最低版本支持 |
-|:-------|:-------|:----|:----|:-----------------------------------------|:-----------|
-| assets | string | -   | -   | 跳转主屏页面                                   | v0.3.0 |
-| sub    | string | -   | -   | 跳转副屏页面（与主页生命周期绑定，且只能在主屏页面&非lsub副屏页面进行跳转） | v0.3.0 |
-| lsub   | string | -   | -   | 跳转副屏页面（生命周期独立，且只能在主屏页面和非sub副屏页面进行跳转）     | v0.3.0 |
+| 属性     | 类型     | 默认值 | 必填  | 说明                                     | 最低版本支持 |
+|:-------|:-------|:----|:----|:---------------------------------------|:-----------|
+| assets | string | -   | -   | 跳转主屏页面                                 | v0.3.0 |
+| sub    | string | -   | -   | 跳转副屏页面（与主页生命周期绑定，且只能在主屏页面和sub副屏页面进行跳转） | v0.3.0 |
+| lsub   | string | -   | -   | 跳转副屏页面（生命周期独立，且只能在主屏页面和lsub副屏页面进行跳转）   | v0.3.0 |
 
