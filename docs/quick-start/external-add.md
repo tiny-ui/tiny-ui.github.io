@@ -15,27 +15,49 @@ nav_order: 3
 <img src="/assets/images/create_module.png">
 
 ## 引入依赖
-在`module`的`gradle`文件下，添加阿里云`maven url`
+在新建`module`的`gradle`文件下的`repositories`，添加阿里云`maven url`
 
-<img src="/assets/images/gradle_psw.png">
+```text
+maven {
+            url 'https://packages.aliyun.com/maven/repository/2140287-release-Q0hGNK/'
+            credentials {
+                username '6359fe31eb6ad002b1d7999a'
+                password 'LOwPng1O)0Jp'
+            }
+        }
+```
 
-在`dependencies`下，添加最新版本的`tiny-core`, `tiny-annotation`, `tiny-compile`
-`com.sunmi.android.elephant:tiny-annotation:+`
-`com.sunmi.android.elephant:tiny-core:+`
-`com.sunmi.android.elephant:tiny-compile:+`
+在`dependencies`下，添加最新版本的`tiny-core`, `tiny-annotation`, `tiny-compile`，例如
+`com.sunmi.android.elephant:tiny-annotation:0.4.7-alpha-11`
+`com.sunmi.android.elephant:tiny-core:0.4.7-alpha-11`
+`com.sunmi.android.elephant:tiny-compile:0.4.7-alpha-11`
 
-<img src="/assets/images/gradle_dependencies.png">
+## 添加命名空间
+在新建`module`的`gradle`文件下，新增一个变量名称`space`, 值填入在开发者中心提供的命名空间的值
+
+<img src="/assets/images/gradle_space.jpg">
 
 ## 添加功能服务
 ### 继承`TinyModule`，并实现相关功能代码
 
+```text
+public class ToastAPI extends TinyModule {
+
+}
+```
+
 ### 定义`DSL`的模块名
 给类添加注解`TinyModule`并标明模块名，如`device`。`DSL`调用时为`TinyAPI.device`。
-lazy表示是否懒加载该模块，不填默认为false
+
+| 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
+|:-----|:--------|:---------------|:----|:------|
+| name | string  | 在DSL层调用时输入的模块名 | 是   |       |
+| lazy | boolean | 懒加载该模块 | 否   | false |
+| desc | string  | 对当前模块的信息描述 | 否   |       |
 
 <img src="/assets/images/module_name.png">
 
-### 构造函数不为空
+### 构造函数不为空(可选)
 #### 传入具体实现类
 TinyModule注解的类构造函数需要传入实现类
 
@@ -49,6 +71,10 @@ TinyModule注解的类构造函数需要传入实现类
 
 ### 定义`DSL`的方法名
 给方法添加注解，如方法名`funcImpl`。`DSL`调用时为`TinyAPI.device.funcImpl()`
+
+| 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
+|:-----|:--------|:---------------|:----|:------|
+| desc | string  | 对当前模块的信息描述 | 否   |       |
 
 <img src="/assets/images/create_method.png">
 
