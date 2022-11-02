@@ -1,6 +1,6 @@
 ---
 layout: default
-title: TimePicker
+title: time picker
 nav_order: 5
 parent: 扩展
 grand_parent: API
