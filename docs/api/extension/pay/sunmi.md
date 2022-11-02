@@ -1,7 +1,7 @@
 ---
 
 layout: default 
-title: sunmiPay
+title: sunmi pay
 nav_order: 5 
 parent: 扩展 
 grand_parent: API

@@ -28,26 +28,38 @@ maven {
 ```
 
 在`dependencies`下，添加最新版本的`tiny-core`, `tiny-annotation`, `tiny-compile`，例如
-`com.sunmi.android.elephant:tiny-annotation:0.4.7-alpha-11`
-`com.sunmi.android.elephant:tiny-core:0.4.7-alpha-11`
-`com.sunmi.android.elephant:tiny-compile:0.4.7-alpha-11`
+`com.sunmi.android.elephant:tiny-annotation:0.4.7-alpha-19`
+`com.sunmi.android.elephant:tiny-core:0.4.7-alpha-19`
+`com.sunmi.android.elephant:tiny-compile:0.4.7-alpha-19`
+
+### 常见问题
+出现获取不到依赖情况：
+1. 可以尝试把拉取阿里云的maven放到repositories首位
+2. 把offline模式打开
 
 ## 添加命名空间
-在新建`module`的`gradle`文件下，新增一个变量名称`space`, 值填入在开发者中心提供的命名空间的值
+在新建`module`的`gradle`文件的`defaultConfig`，新增以下代码
+```text
+javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["PROJECT_DIR" : project.projectDir.path,"COMPONENT_SPACE":"在开发者中心提供的组件命名空间的值","API_SPACE":"在开发者中心提供的API命名空间的值"]
+            }
+}
+```
 
-<img src="/assets/images/gradle_space.jpg">
+<img src="/assets/images/gradle_space.png">
 
 ## 添加功能服务
 ### 继承`TinyModule`，并实现相关功能代码
 
 ```text
-public class ToastAPI extends TinyModule {
+public class APIModule extends TinyModule {
 
 }
 ```
 
 ### 定义`DSL`的模块名
-给类添加注解`TinyModule`并标明模块名，如`device`。`DSL`调用时为`TinyAPI.device`。
+给类添加注解`TinyModule`并标明模块名，如`device`。`DSL`调用时为`命名空间.device`。
 
 | 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
 |:-----|:--------|:---------------|:----|:------|
@@ -70,7 +82,7 @@ TinyModule注解的类构造函数需要传入实现类
 <img src="/assets/images/create_impl.png">
 
 ### 定义`DSL`的方法名
-给方法添加注解，如方法名`funcImpl`。`DSL`调用时为`TinyAPI.device.funcImpl()`
+给方法添加注解，如方法名`funcImpl`。`DSL`调用时为`命名空间.device.funcImpl()`
 
 | 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
 |:-----|:--------|:---------------|:----|:------|
@@ -91,4 +103,4 @@ TinyModule注解的类构造函数需要传入实现类
 
 <img src="/assets/images/upload_maven.png">
 
-## 将`maven`地址注册到商米开发者中心
+## 将`maven`地址注册到商米开发者中心，同时将模块下生成的meta.json一并上传至开发者中心
