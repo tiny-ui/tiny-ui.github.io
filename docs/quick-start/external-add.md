@@ -58,8 +58,27 @@ public class APIModule extends TinyModule {
 }
 ```
 
+### TinyModule包含方法
+
+| 方法名                    | 方法描述                                               |
+|:-----------------------|:---------------------------------------------------|
+| getAndroidContext      | 获取当前页面Context上下文                                   |
+| getJSContext           | 获取JS Context上下文                                    |
+| getTinyContext         | 获取TinyContext接口                                    |
+| getInstanceContext     | 获取Instance示例                                       |
+| getDisplay             | 获取屏幕属性接口                                           |
+| onModuleCreate         | 在页面创建自己时期调用                                        |
+| onResult               | 等同于Activity的onResult()，在页面执行方法回调时期调用               |
+| onBackPressed          | 等同于Activity的onBackPressed(), 在按下物理返回键时期调用          |
+| onConfigurationChanged | 等同于Activity的onConfigurationChanged()，在页面发生配置变更时期调用 |
+| onStart                | 等同于Activity的onStart()                              |
+| onResume               | 等同于Activity的onResume()                             |
+| onPause                | 等同于Activity的onPause()                              |
+| onStop                 | 等同于Activity的onStop()                               |
+| onDestroy              | 等同于Activity的onDestroy()                            |
+
 ### 定义`DSL`的模块名
-给类添加注解`TinyModule`并标明模块名，如`device`。`DSL`调用时为`命名空间.device`。
+给类添加注解`TinyModule`并标明模块名，如`device`。`DSL`调用时为`API命名空间.device`。
 
 | 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
 |:-----|:--------|:---------------|:----|:------|
@@ -82,7 +101,7 @@ TinyModule注解的类构造函数需要传入实现类
 <img src="/assets/images/create_impl.png">
 
 ### 定义`DSL`的方法名
-给方法添加注解，如方法名`funcImpl`。`DSL`调用时为`命名空间.device.funcImpl()`
+给方法添加注解，如方法名`funcImpl`。`DSL`调用时为`API命名空间.device.funcImpl()`
 
 | 属性名  | 类型      | 属性说明           | 必填  | 默认值   |
 |:-----|:--------|:---------------|:----|:------|
@@ -90,16 +109,32 @@ TinyModule注解的类构造函数需要传入实现类
 
 <img src="/assets/images/create_method.png">
 
+### 常见问题
+方法入参支持类型
+
+| 类名                | 说明                                             |
+|:------------------|:-----------------------------------------------|
+| java.lang.Object  | 只能是Object类型，不能是自定义类                            |
+| java.lang.String  |                                                |
+| java.lang.Boolean |                                                |
+| java.lang.Long    |                                                |
+| java.lang.Double  |                                                |
+| java.lang.Float   |                                                |
+| java.lang.Integer |                                                |
+| com.whl.quickjs.wrapper.JSObject  | 类似于自定义类，可通过getProperty / setProperty来设置/获取对应属性 |
+| com.whl.quickjs.wrapper.JSFunction  | 类似于回调使用，入参格式为不定长度Object                        |
+| com.whl.quickjs.wrapper.JSArray  | 类似于Array，可通过get / set来设置/获取指定下标参数              |
+
 ## 添加组件
 ### 继承`Component`或者`ComponentLayout`，并实现相关代码
 
 ### 定义`DSL`的组件名
-给类添加注解`TinyComponent`并标明组件名，如`custom`。`DSL`调用时为`TinyDOM.createElement("custom")`
+给类添加注解`TinyComponent`并标明组件名，如`custom`。`DSL`调用时为`TinyDOM.createElement("Component命名空间/custom")`
 
 <img src="/assets/images/create_component.png">
 
 ## 上传到`maven`
-将实现的模块代码上传到`maven`
+将实现的模块代码上传到指定私有云`maven`仓库
 
 <img src="/assets/images/upload_maven.png">
 
