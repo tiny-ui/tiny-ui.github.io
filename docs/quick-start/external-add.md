@@ -11,6 +11,7 @@ nav_order: 3
 # 接入流程
 ## 创建`Android Module`
 创建对应的模块，在该模块实现需要导入到`tiny`工程的功能
+(JDK版本 >= 1.8)
 
 <img src="/assets/images/create_module.png">
 
