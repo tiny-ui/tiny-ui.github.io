@@ -29,9 +29,9 @@ maven {
 ```
 
 在`dependencies`下，添加最新版本的`tiny-core`, `tiny-annotation`, `tiny-compile`，例如
-`com.sunmi.android.elephant:tiny-annotation:0.4.7-alpha-19`
-`com.sunmi.android.elephant:tiny-core:0.4.7-alpha-19`
-`com.sunmi.android.elephant:tiny-compile:0.4.7-alpha-19`
+`com.sunmi.android.elephant:tiny-annotation:x.x.x`
+`com.sunmi.android.elephant:tiny-core:x.x.x`
+`com.sunmi.android.elephant:tiny-compile:x.x.x`
 
 ## 添加包路径
 在模块下的`AndroidManifest.xml`，添加对应的`package`
