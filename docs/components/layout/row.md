@@ -52,7 +52,7 @@ TinyDOM.createElement(
 |:--------------:|:-------------:|:----------:|:--------------------------------------------------------:|:------------------------------------------------------------------------------:|
 |      flex      | number、string |     1      | flex 属性决定元素在主轴上如何填满可用区域。整个区域会根据每个元素设置的 flex 属性值被分割成多个部分。 |                                       无                                        |
 | justifyContent |    string     | flex-start |                      主轴方向上的子控件排列方式                       | 'flex-start'，'flex-end'，'center'，'space-between'，'space-around'，'space-evenly' |
-|    flexWrap    |    string     |  no-wrap   |         指定子组件单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。          |                         'nowrap'，'wrap'，'wrap-reverse'                         |
+|    flexWrap    |    string     |  no-wrap   |         指定子组件单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。          |                         'no-wrap'，'wrap'，'wrap-reverse'                         |
 |   alignItems   |    string     |  stretch   |                     交叉轴方向上的子控件的对齐方式                      |             'flex-start'，'flex-end'，'center'，'baseline'，'stretch'              |
 |  alignContent  |    string     |  stretch   |                  多主轴情况下，交叉轴方向上的子控件的排列方式                  |    flex-start'，'flex-end'，'center'，'space-between'，'space-around'，'stretch'    |
 |    flexGrow    |    number     |     0      |                     子控件占有父容器剩余空间的权重                      |                                       无                                        |
