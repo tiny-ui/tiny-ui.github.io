@@ -52,23 +52,17 @@ TinyAPI.request.upload(
         file: data, // 只上传data里的realPath参数
         url: "http://max-test.sunmi.com/api/v1/upload",
         upload: "uploadFile",
+        tag: "image/*",
         headers: {
             "user": "%7B%22activated%22%3Atrue%2C%22did%22%3A%227411%22%2C%22",
-            "uid": "SM001",
+            "uid": "SM001"
         },
         params: {
-            version: "1.0",
-            method: "create"
+            "sunmi-appid": "26daee788617418a9913bac317917006"
         },
         form: {
-            request: {
-                name: "picture.jpg",
-                env: "debug"
-            },
-            context: {
-                projectCode: "20331gq",
-                projectSubType: "APP"
-            }
+            "contentTypes": "[\"image/png\",\"image/jpeg\"]",
+            "imageConvertName": "png"
         },
         success: function (res) {
             console.log(res);
@@ -109,16 +103,17 @@ success示例
 
 ## 参数
 
-| 属性名     | 类型       | 属性说明      | 必填  | 默认值   | 取值范围                 |
-|:--------|:---------|:----------|:----|:------|:---------------------|
-| file    | Arrays   | 上传图片      | 是   |       |  |
-| url     | String   | 上传地址      | 是   |       |           |
-| upload  | String   | 上传图片对应参数名 | 是   |       |           |
-| headers | Object   | 网络请求头     | 否   |       |   |
-| params  | Object   | 网络请求数据体   | 否   |       |   |
-| form    | Object   | 网络form结构体 | 是   |       |   |
-| success | Function | 上传成功回调    | 否   |       |   |
-| fail    | Function | 上传失败回调    | 否   |       |   |
+| 属性名     | 类型       | 属性说明       | 必填  | 默认值   | 取值范围                 |
+|:--------|:---------|:-----------|:----|:------|:---------------------|
+| file    | Arrays   | 上传图片       | 是   |       |  |
+| url     | String   | 上传地址       | 是   |       |           |
+| upload  | String   | 上传图片对应key值 | 否   |       |           |
+| tag     | String   | 上传文件类型     | 否   |       |           |
+| headers | Object   | 网络请求头      | 否   |       |   |
+| params  | Object   | 网络请求数据体    | 否   |       |   |
+| form    | Object   | 网络form结构体  | 是   |       |   |
+| success | Function | 上传成功回调     | 否   |       |   |
+| fail    | Function | 上传失败回调     | 否   |       |   |
 
 ### `success`参数
 
