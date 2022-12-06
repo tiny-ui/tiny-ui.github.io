@@ -119,7 +119,7 @@ success示例
 
 | 属性名     | 类型       | 属性说明      | 必填  | 默认值   | 取值范围
 |:----|:----|:------|:-----|:----|:-----------|:-----|
-| url | String | 网络请求地址 |  |  | |:-----|
-| status | Integer | 网络请求结果状态码 |  |  | |:-----|
-| headers | Object | 网络请求结果headers |  |  |  |:-----|
-| body | Object | 网络请求结果 |  |  |  |:-----|
+| url | String | 网络请求地址 |  |  | | |
+| status | Integer | 网络请求结果状态码 |  |  | | |
+| headers | Object | 网络请求结果headers |  |  |  | |
+| body | Object | 网络请求结果 |  |  |  | |
