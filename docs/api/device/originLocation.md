@@ -1,19 +1,19 @@
 ---
 layout: default
-title: location
-nav_order: 6
+title: originLocation
+nav_order: 7
 parent: 设备
 grand_parent: API
 ---
 
-# location
+# originLocation
 
 ## 说明
-获取当前设备经纬度（使用高德定位SDK，需要去高德申请对应的appid和appKey）
+获取当前设备经纬度（使用安卓原生定位）
 
 ## 示例
 ```javascript
-TinyAPI.device.location((res) => {console.log(res)});
+TinyAPI.device.originLocation((res) => {console.log(res)});
 // { latitude: 37.421998333333335, longitude: -122.084 }
 ```
 
