@@ -186,7 +186,7 @@ TinyAPI.iot.unregisterServiceChange({
 
 # registerServiceEvent
 ## 说明
-监听指定服务的物模型中定义的`Event`发生，`deviceId` + `serviceId` 确定唯一服务
+监听指定服务的物模型中定义的`Event`发生，`deviceId` + `serviceId` 确定唯一服务（同一个serviceId注册的event在整个app中只能存在一个）
 
 ## 示例
 ```javascript
@@ -207,6 +207,42 @@ TinyAPI.iot.registerServiceEvent({
 | serviceId | string   | `ThingService`中的`serviceId`                 | 是   |  |      |
 | event     | function | `IServiceEventListener` 监听回调                 | 否   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
+
+## `event`入参
+
+| 属性名 | 类型     | 属性说明                   | 必填  | 默认值                         | 取值范围 |
+|:----|:-------|:-----------------------|:----|:----------------------------|:-----|
+| s   | string |  |     |  |      |
+| s1  | string |  |     |  |      |
+| s2  | string |  |     |  |      |
+
+{:toc}
+
+# registerServiceEventByListener
+## 说明
+监听指定服务的物模型中定义的`Event`发生，`deviceId` + `serviceId` 确定唯一服务（同一个serviceId注册的event在整个app中可以存在多个）
+
+## 示例
+```javascript
+TinyAPI.iot.registerServiceEventByListener({
+    deviceId: "VB03211P26005",
+    serviceId: "thermal_printer",
+    serviceType: "printer",
+    fail: (error) => {
+        console.log(error)
+    }
+});
+```
+
+## 入参
+
+| 属性名         | 类型       | 属性说明                          | 必填  | 默认值                         | 取值范围 |
+|:------------|:---------|:------------------------------|:----|:----------------------------|:-----|
+| deviceId    | string   | `ThingService`中的`deviceId`    | 是   |  |      |
+| serviceId   | string   | `ThingService`中的`serviceId`   | 是   |  |      |
+| serviceType | string   | `ThingService`中的`serviceType` | 是   |  |      |
+| event       | function | `IServiceEventListener` 监听回调  | 否   |  |      |
+| fail        | function | 调用失败回调                        | 否   |  |      |
 
 ## `event`入参
 
@@ -240,6 +276,33 @@ TinyAPI.iot.unregisterServiceEvent({
 | deviceId  | string   | `ThingService`中的`deviceId` | 是   |  |      |
 | serviceId | string   | `ThingService`中的`serviceId`                 | 是   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
+
+{:toc}
+
+# unregisterServiceEventByListener
+## 说明
+取消监听指定物服务的`eventByListener`
+
+## 示例
+```javascript
+TinyAPI.iot.unregisterServiceEventByListener({
+    deviceId: "VB03211P26005",
+    serviceId: "thermal_printer",
+    serviceType: "printer",
+    fail: (error) => {
+        console.log(error)
+    }
+});
+```
+
+## 入参
+
+| 属性名         | 类型       | 属性说明                          | 必填  | 默认值                         | 取值范围 |
+|:------------|:---------|:------------------------------|:----|:----------------------------|:-----|
+| deviceId    | string   | `ThingService`中的`deviceId`    | 是   |  |      |
+| serviceId   | string   | `ThingService`中的`serviceId`   | 是   |  |      |
+| serviceType | string   | `ThingService`中的`serviceType` | 是   |  |      |
+| fail        | function | 调用失败回调                        | 否   |  |      |
 
 {:toc}
 

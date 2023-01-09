@@ -1,7 +1,7 @@
 ---
 layout: default
 title: scan
-nav_order: 7
+nav_order: 8
 parent: 设备
 grand_parent: API
 ---
