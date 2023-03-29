@@ -35,7 +35,7 @@ let result = TinyAPI.iot.init({
     }
 });
 
-console.log(result); // true, false
+console.log(result); // -1, 0, ...
 ```
 
 ## 入参
@@ -48,9 +48,9 @@ console.log(result); // true, false
 
 ## 出参
 
-| 属性名    | 类型      | 属性说明          | 必填  | 默认值                         | 取值范围 |
-|:-------|:--------|:--------------|:----|:----------------------------|:-----|
-| result | boolean | 判断设备系统中是否有物服务 |     |  |      |
+| 属性名    | 类型     | 属性说明        | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:------------|:----|:----------------------------|:-----|
+| result | number | 物服务初始化结果状态码 |     |  |      |
 
 {:toc}
 
@@ -107,6 +107,88 @@ var result = TinyAPI.iot.getService("printer");
 
 {:toc}
 
+# getDevice
+## 说明
+获取指定设备的服务，类型在设备模型中定义
+
+## 示例
+```javascript
+var result = TinyAPI.iot.getDevice();
+
+// result:
+// {
+//      msg: null,
+//      data:
+// [
+//    {
+//       "deviceId":"KM16225C43382",
+//       "deviceType": "",
+//       "isAuth":true,
+//       "isLocal":true,
+//       "model":"",
+//       "deviceName":"K2_MINI",
+//       "serviceList": [
+//          {"deviceId":null,
+//           "deviceName":null,
+//           "deviceType":null,
+//           "isAuth":false,
+//           "model":null,
+//           "serviceId":"thermal_printer",
+//           "serviceType":"printer"},
+//          {"deviceId":null,
+//           "deviceName":null,
+//           "deviceType":null,
+//           "isAuth":false,
+//           "model":null,
+//           "serviceId":"sunmi_statuslamp",
+//           "serviceType":"statuslamp"},
+//          {"deviceId":null,
+//           "deviceName":null,
+//           "deviceType":null,
+//           "isAuth":false,
+//           "model":null,
+//           "serviceId":"sunmi_scanner",
+//           "serviceType":"scanner"},
+//          {"deviceId":null,
+//           "deviceName":null,
+//           "deviceType":null,
+//           "isAuth":false,
+//           "model":null,
+//           "serviceId":"sunmi_idmifardcard",
+//           "serviceType":"id_mifare_card"}
+//       ]
+//    }
+// ]
+// }
+```
+
+## 入参
+
+| 属性名      | 类型       | 属性说明                | 必填  | 默认值                         | 取值范围 |
+|:---------|:---------|:--------------------|:----|:----------------------------|:-----|
+| deviceId | string   | 设备id，如果不传则返回所有的设备服务 | 否   |  |      |
+
+## 出参
+
+| 属性名  | 类型     | 属性说明 | 必填  | 默认值                         | 取值范围 |
+|:-----|:-------|:-----|:----|:----------------------------|:-----|
+| msg  | string | 错误信息 |     |  |      |
+| data | arrays | 服务数组 |     |  |      |
+
+## `data`参数
+
+| 属性名         | 类型      | 属性说明   | 必填  | 默认值                         | 取值范围 |
+|:------------|:--------|:-------|:----|:----------------------------|:-----|
+| deviceId    | string  | 设备id   |     |  |      |
+| deviceType  | string  | 设备类型   |     |  |      |
+| isAuth      | boolean | 是否校验   |     |  |      |
+| isLocal     | boolean | 是否本机   |     |  |      |
+| serviceList | List    | 包含的物服务 |     |  |      |
+| model       | string  |        |     |  |      |
+| deviceName  | string  | 设备名称   |     |  |      |
+
+{:toc}
+
 # registerServiceChange
 ## 说明
 监听系统中的指定类型服务变化
@@ -159,6 +241,12 @@ TinyAPI.iot.registerServiceChange({
 | s1  | string |  |     |  |      |
 | s2  | string |  |     |  |      |
 
+## 出参
+
+| 属性名    | 类型     | 属性说明        | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:------------|:----|:----------------------------|:-----|
+| result | number | 注册服务变化结果状态码 |     |  |      |
+
 {:toc}
 
 # unregisterServiceChange
@@ -181,6 +269,12 @@ TinyAPI.iot.unregisterServiceChange({
 |:--------|:---------|:-----------------------|:----|:----------------------------|:-----|
 | type    | string   | 服务类型，类似`printer`，`scanner` | 是   |  |      |
 | fail    | function | 调用失败回调                 | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明          | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:--------------|:----|:----------------------------|:-----|
+| result | number | 取消注册服务变化结果状态码 |     |  |      |
 
 {:toc}
 
@@ -215,6 +309,12 @@ TinyAPI.iot.registerServiceEvent({
 | s   | string |  |     |  |      |
 | s1  | string |  |     |  |      |
 | s2  | string |  |     |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明        | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:------------|:----|:----------------------------|:-----|
+| result | number | 注册服务监听结果状态码 |     |  |      |
 
 {:toc}
 
@@ -252,6 +352,12 @@ TinyAPI.iot.registerServiceEventByListener({
 | s1  | string |  |     |  |      |
 | s2  | string |  |     |  |      |
 
+## 出参
+
+| 属性名    | 类型     | 属性说明        | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:------------|:----|:----------------------------|:-----|
+| result | number | 注册服务监听结果状态码 |     |  |      |
+
 {:toc}
 
 # unregisterServiceEvent
@@ -276,6 +382,12 @@ TinyAPI.iot.unregisterServiceEvent({
 | deviceId  | string   | `ThingService`中的`deviceId` | 是   |  |      |
 | serviceId | string   | `ThingService`中的`serviceId`                 | 是   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明          | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:--------------|:----|:----------------------------|:-----|
+| result | number | 取消注册服务监听结果状态码 |     |  |      |
 
 {:toc}
 
@@ -303,6 +415,12 @@ TinyAPI.iot.unregisterServiceEventByListener({
 | serviceId   | string   | `ThingService`中的`serviceId`   | 是   |  |      |
 | serviceType | string   | `ThingService`中的`serviceType` | 是   |  |      |
 | fail        | function | 调用失败回调                        | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明          | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:--------------|:----|:----------------------------|:-----|
+| result | number | 取消注册服务监听结果状态码 |     |  |      |
 
 {:toc}
 
@@ -338,6 +456,12 @@ TinyAPI.iot.registerServiceProperty({
 | s1  | string |  |     |  |      |
 | s2  | string |  |     |  |      |
 
+## 出参
+
+| 属性名    | 类型     | 属性说明                | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:--------------------|:----|:----------------------------|:-----|
+| result | number | 注册服务`property`结果状态码 |     |  |      |
+
 {:toc}
 
 # unregisterServiceProperty
@@ -362,6 +486,12 @@ TinyAPI.iot.unregisterServiceProperty({
 | deviceId  | string   | `ThingService`中的`deviceId` | 是   |  |      |
 | serviceId | string   | `ThingService`中的`serviceId`                 | 是   |  |      |
 | fail      | function | 调用失败回调                 | 否   |  |      |
+
+## 出参
+
+| 属性名    | 类型     | 属性说明                  | 必填  | 默认值                         | 取值范围 |
+|:-------|:-------|:----------------------|:----|:----------------------------|:-----|
+| result | number | 取消注册服务`property`结果状态码 |     |  |      |
 
 {:toc}
 
@@ -620,6 +750,33 @@ var thing =
 | map | obj    | 调用结果       |     |  |      |
 
 {:toc}
+
+## 状态码
+
+| 错误码    | 错误描述                                             | 
+|:-------|:-------------------------------------------------|
+| 200    | 成功                                               |
+| -1     | SDK没有初始化                                         |
+| -2     | 正在初始化                                            |
+| -1000  | 获取不到SN，需要READ_PHONE_STATE权限                      |
+| -1001  | 有权限下，SN仍获取失败，这种情况下需要升级ROM（安卓11设备很早期版本rom可能存在该问题） |
+| -2000  | 应用市场不存在，需要设备先安装应用市场后下载SDK才能正常使用                  |
+| -2001  | 应用市场下载失败 (ps:无返回具体错误码 需要显示弹框才知道)                 |
+| -2002  | 应用市场安装失败 (ps:无返回具体错误码 需要显示弹框才知道)                 |
+| -2003  | 应用市场调用超时，调用应用市场能力30秒无返回                          |
+| -3000  | 查询信息失败，具体原因见msg                                  |
+| -10000 | license未校验                                       |
+| -10001 | license失效                                        |
+| -10002 | license校验失败                                      |
+| -10003 | license参数异常                                      |
+| 301    | 服务已调用，但是响应超时                                     |
+| 400    | 参数为空或者错误                                         |
+| 500    | 没有找到服务，或者服务暂时不可用                                 |
+| 501    | 服务已下线，暂时不可用                                      |
+| 502    | 当前堆积请求过多，请稍后再请求                                  |
+| 510    | 服务未发布                                            |
+| -20000 | 参数异常                                             |
+| -20001 | 绑定服务失败                                           |
 
 # FAQ
 ## 一直出现【IOT SDK正在下载，请稍后再试～】吐司怎么办！！！
