@@ -195,7 +195,7 @@ var result = TinyAPI.iot.getDevice();
 
 ## 示例
 ```javascript
-TinyAPI.iot.registerServiceChange({
+let result = TinyAPI.iot.registerServiceChange({
     type: "printer",
     add: (res) => {
         console.log(res);
@@ -255,7 +255,7 @@ TinyAPI.iot.registerServiceChange({
 
 ## 示例
 ```javascript
-TinyAPI.iot.unregisterServiceChange({
+let result = TinyAPI.iot.unregisterServiceChange({
     type: "printer",
     fail: (error) => {
         console.log(error)
@@ -284,7 +284,7 @@ TinyAPI.iot.unregisterServiceChange({
 
 ## 示例
 ```javascript
-TinyAPI.iot.registerServiceEvent({
+let result = TinyAPI.iot.registerServiceEvent({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     fail: (error) => {
@@ -324,7 +324,7 @@ TinyAPI.iot.registerServiceEvent({
 
 ## 示例
 ```javascript
-TinyAPI.iot.registerServiceEventByListener({
+let result = TinyAPI.iot.registerServiceEventByListener({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     serviceType: "printer",
@@ -366,7 +366,7 @@ TinyAPI.iot.registerServiceEventByListener({
 
 ## 示例
 ```javascript
-TinyAPI.iot.unregisterServiceEvent({
+let result = TinyAPI.iot.unregisterServiceEvent({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     fail: (error) => {
@@ -397,7 +397,7 @@ TinyAPI.iot.unregisterServiceEvent({
 
 ## 示例
 ```javascript
-TinyAPI.iot.unregisterServiceEventByListener({
+let result = TinyAPI.iot.unregisterServiceEventByListener({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     serviceType: "printer",
@@ -430,7 +430,7 @@ TinyAPI.iot.unregisterServiceEventByListener({
 
 ## 示例
 ```javascript
-TinyAPI.iot.registerServiceProperty({
+let result = TinyAPI.iot.registerServiceProperty({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     fail: (error) => {
@@ -470,7 +470,7 @@ TinyAPI.iot.registerServiceProperty({
 
 ## 示例
 ```javascript
-TinyAPI.iot.unregisterServiceProperty({
+let result = TinyAPI.iot.unregisterServiceProperty({
     deviceId: "VB03211P26005",
     serviceId: "thermal_printer",
     fail: (error) => {
