@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 页面生命周期
+title: lifecycle
 nav_order: 2
 parent: 基础
 grand_parent: API
