@@ -1,7 +1,7 @@
 ---
 layout: default
 title: has sub-screen
-nav_order: 12
+nav_order: 13
 parent: 设备
 grand_parent: API
 ---
